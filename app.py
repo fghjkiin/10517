@@ -1,13 +1,14 @@
-import streamlit as st
 
-st.title("카운터 앱")
-if 'count' not in st.session_state:
-    st.session_state.count = 0
-if st.button("증가"):
-    st.session_state.count += 1
-st.markdown(f"## 현재 숫자: {st.session_state.count} ")
-import streamlit as st
 
+def reset_all():
+    st.session_state.user_name = ""
+    st.session_state.weather = "맑음"
+    st.session_state.top_type = "후드티"
+    st.session_state.top_color = "맑음"
+    st.session_state.bottom_type = "청바지"
+    st.session_state.bottom_color = "슬림"
+    st.session_state.shoes = "스니커스"
+    st.session_state.acc = []
 with st.sidebar:
     st.header("프로필")
     user_name = st.text_input("닉네임")
@@ -57,3 +58,6 @@ if st.button("코디 완성하기"):
         with st.expander("코디 연출 팁 영상 보기"):
             st.video("https://www.youtube.com/watch?v=lkMZ8ytly1k")
             st.write("전문가가 제안하는 코디 연출법을 참고해 보세요.")
+
+
+st.button("전체초기화", on_click=reset_all)
